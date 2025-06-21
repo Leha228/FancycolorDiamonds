@@ -1,5 +1,6 @@
 package com.fancycolor.apk
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -36,6 +37,7 @@ class CartPayAdapter: RecyclerView.Adapter<CartPayAdapter.CartViewHolder>() {
         return productList.size
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
         Picasso.get().load(productList[position].thumb).into(holder.itemView.payImage)
         holder.itemView.payPrice.text = "Цена за единицу: " + productList[position].price
@@ -80,21 +82,19 @@ class CartPayAdapter: RecyclerView.Adapter<CartPayAdapter.CartViewHolder>() {
                     try {
                         val response = api.cartAdd("Bearer " + bearer.getString("access_token", "empty").toString(), map).awaitResponse()
                         if (response.isSuccessful) {
-                            val data = response.body()!!
-                            withContext(Dispatchers.Main) {
-                                Toast.makeText(activity as FragmentActivity, "Товар успешно добавлен!", Toast.LENGTH_SHORT).show()
-                            }
-                            Log.d("Retrofit", "Success")
+                            data.quantity = (data.quantity.toInt() + 1).toString()
+                            Log.d("Retrofit", "Добавили +1 кол-во товара")
                         }
                         else {
                             Log.d("Retrofit", response.code().toString())
                         }
                     } catch (e: Exception) {
                         withContext(Dispatchers.Main) {
-                            Toast.makeText(activity as FragmentActivity, "No link internet", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(activity as FragmentActivity, "Ошибка добавления товара", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
+                notifyDataSetChanged()
             }
             itemView.buttonRemove.setOnClickListener { v: View ->
                 val position: Int = adapterPosition
@@ -112,27 +112,27 @@ class CartPayAdapter: RecyclerView.Adapter<CartPayAdapter.CartViewHolder>() {
                     try {
                         val response = api.cartDelete("Bearer " + bearer.getString("access_token", "empty").toString(), data.key).awaitResponse()
                         if (response.isSuccessful) {
-                            withContext(Dispatchers.Main) {
-                                Toast.makeText(activity as FragmentActivity, "Товар успешно удален!", Toast.LENGTH_SHORT).show()
-                            }
-                            Log.d("Retrofit", "Success")
+                            data.quantity = (data.quantity.toInt() - 1).toString()
+                            Log.d("Retrofit", "Удалили одно кол-во товара")
                         }
                         else {
                             Log.d("Retrofit", response.code().toString())
                         }
                     } catch (e: Exception) {
                         withContext(Dispatchers.Main) {
-                            Toast.makeText(activity as FragmentActivity, "No link internet", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(activity as FragmentActivity, "Ошибка удаления товара", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
+                notifyDataSetChanged()
             }
         }
     }
 
     fun setData(newList: List<ProductX>) {
         productList = newList
-        Log.d("Retrofit - ProductList", productList.size.toString())
+        Log.d("List init", productList.toString())
         notifyDataSetChanged()
+        Log.d("Retrofit - ProductList", productList.size.toString())
     }
 }

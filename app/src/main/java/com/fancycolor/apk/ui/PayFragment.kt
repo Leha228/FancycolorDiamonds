@@ -553,7 +553,7 @@ class PayFragment : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiRequests::class.java)
-
+        Log.d("Test", "Begin")
         GlobalScope.launch(Dispatchers.IO) {
             try {
                 val response = api.getProductBacket("Bearer " + bearer.getString("access_token", "empty").toString()).awaitResponse()

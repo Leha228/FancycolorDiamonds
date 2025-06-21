@@ -19,7 +19,7 @@ data class ProductX(
     @SerializedName("product_id")
     val productId: String,
     @SerializedName("quantity")
-    val quantity: String,
+    var quantity: String,
     @SerializedName("recurring")
     val recurring: String,
     @SerializedName("reward")

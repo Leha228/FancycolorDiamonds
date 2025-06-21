@@ -127,7 +127,7 @@
                             android:id="@+id/radioButtonDefaultPayment"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Даниил Хомяков"
+                            android:text=""
                             android:checked="true"
                             android:buttonTint="@color/colorHeaderText"
                             android:textSize="14sp" />
@@ -436,7 +436,7 @@
                             android:layout_height="wrap_content"
                             android:buttonTint="@color/colorHeaderText"
                             android:checked="true"
-                            android:text="Даниил Хомяков"
+                            android:text=""
                             android:textSize="14sp" />
 
                         <RadioButton

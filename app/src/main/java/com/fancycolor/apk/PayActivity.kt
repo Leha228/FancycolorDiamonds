@@ -1,5 +1,6 @@
 package com.fancycolor.apk
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -16,6 +17,7 @@ import retrofit2.awaitResponse
 import retrofit2.converter.gson.GsonConverterFactory
 
 class PayActivity : AppCompatActivity() {
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pay)
