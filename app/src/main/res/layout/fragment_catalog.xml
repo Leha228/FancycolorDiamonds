@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.CatalogFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <TextView
+                android:id="@+id/catalog_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/catalog_text"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorHeaderText"
+                android:typeface="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.511" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorGraySmall"
+            app:layout_constraintBottom_toBottomOf="@id/constraintLayout" />
+
+        <!--
+            Jywerly _________________________________________________________________________________
+         -->
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnJewelry"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="start"
+            android:paddingLeft="50dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="@string/jewelry"
+            android:textColor="@color/colorGray"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCategoryInfo"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:text="ПО КАТЕГОРИЯМ"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnJewelry" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnNew"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:text="@string/new_items"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCategoryInfo" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRings"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:text="@string/rings"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnNew" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnEarrings"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:text="@string/earrings"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRings" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnObesitySuspension"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:text="@string/obesity_and_suspension"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnEarrings" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBracelets"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:text="@string/Bracelets"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnObesitySuspension" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRecentlySold"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:text="@string/recently_sold"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnBracelets" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRockInfo"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:text="ПО КАМНЯМ"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRecentlySold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnColoredBliliants"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:text="• С цветными бриллиантами"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRockInfo" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBlillants"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:text="• С бриллиантами"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnColoredBliliants" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnGems"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:text="• С драгоценными камнями"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnBlillants" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorGray"
+            app:layout_constraintBottom_toBottomOf="@id/btnGems" />
+
+        <!--
+            END Jywerly ____________________________________________________________________
+            START Wedding and engagement ___________________________________________________
+         -->
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnWeddingEngagement"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingTop="20dp"
+            android:gravity="start"
+            android:paddingLeft="50dp"
+            android:paddingBottom="20dp"
+            android:text="@string/wedding_and_engagement"
+            android:textColor="@color/colorGray"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnStyleInfo"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:text="ПО СТИЛЮ"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnWeddingEngagement" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSolitaireRings"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:paddingRight="24dp"
+            android:text="@string/solitaire_rings"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnStyleInfo" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRingsHalo"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:paddingRight="24dp"
+            android:text="@string/rings_halo"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSolitaireRings" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRingsWithThreeRings"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:paddingRight="24dp"
+            android:text="@string/rings_with_three_rings"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRingsHalo" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRingsWithSideStones"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:paddingRight="24dp"
+            android:text="@string/rings_with_side_stones"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRingsWithThreeRings" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnWeddingsInfo"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:text="СВАДЬБА"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRingsWithSideStones" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnFancyColorRingsOfEternity"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:paddingRight="24dp"
+            android:text="@string/fancy_color_rings_of_eternity"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnWeddingsInfo" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDiamondRingsOfEternity"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:paddingRight="24dp"
+            android:text="@string/diamond_rings_of_eternity"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnFancyColorRingsOfEternity" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnWeddingRings"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:text="@string/wedding_rings"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnDiamondRingsOfEternity" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnWeddingRingsTwo"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:paddingRight="24dp"
+            android:text="@string/wedding_rings_two"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnWeddingRings" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnMensRings"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="100dp"
+            android:paddingRight="24dp"
+            android:text="@string/mens_rings"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnWeddingRingsTwo" />
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorGray"
+            app:layout_constraintBottom_toBottomOf="@id/btnMensRings" />
+
+
+        <!--
+            END Wedding and engagement ___________________________________________________
+         -->
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDiamonds"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:gravity="start"
+            android:paddingLeft="50dp"
+            android:text="@string/diamonds"
+            android:textColor="@color/colorGray"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorGray"
+            app:layout_constraintBottom_toBottomOf="@id/btnDiamonds" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnStones"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:gravity="start"
+            android:paddingLeft="50dp"
+            android:text="@string/stones"
+            android:textColor="@color/colorGray"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view6" />
+
+        <View
+            android:id="@+id/view7"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorGray"
+            app:layout_constraintBottom_toBottomOf="@id/btnStones" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

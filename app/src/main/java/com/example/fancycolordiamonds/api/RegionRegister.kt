@@ -1,0 +1,13 @@
+package com.example.fancycolordiamonds.api
+
+
+import com.google.gson.annotations.SerializedName
+
+data class RegionRegister(
+    @SerializedName("data")
+    val `data`: DataRegion,
+    @SerializedName("error")
+    val error: List<Any>,
+    @SerializedName("success")
+    val success: Int
+)
