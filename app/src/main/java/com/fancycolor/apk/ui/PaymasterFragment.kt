@@ -1,5 +1,6 @@
 package com.fancycolor.apk.ui
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -16,6 +17,7 @@ import com.fancycolor.apk.R
 
 class PaymasterFragment : Fragment() {
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,6 +38,7 @@ class PaymasterFragment : Fragment() {
             webView.webViewClient = WebViewClient()
             webView.settings.javaScriptEnabled = true
             webView.loadData("$details<script>document.querySelector('.btn').click()</script>", mimeType, utfType)
+            Log.d("PayMasterFragment", "Running")
             webView.visibility = View.VISIBLE
         }
 

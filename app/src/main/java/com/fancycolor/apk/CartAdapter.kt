@@ -33,7 +33,6 @@ class CartAdapter: RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        Log.d("Retrofit - getItemCount", productList.size.toString())
         return productList.size
     }
 
@@ -98,7 +97,6 @@ class CartAdapter: RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
     fun setData(newList: List<ProductX>) {
         productList = newList
-        Log.d("Retrofit - ProductList", productList.size.toString())
         notifyDataSetChanged()
     }
 }

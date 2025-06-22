@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import com.fancycolor.apk.api.ProductX
 import com.fancycolor.apk.ui.ProductViewFragment
@@ -33,7 +35,6 @@ class CartPayAdapter: RecyclerView.Adapter<CartPayAdapter.CartViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        Log.d("Retrofit - getItemCount", productList.size.toString())
         return productList.size
     }
 
@@ -43,7 +44,7 @@ class CartPayAdapter: RecyclerView.Adapter<CartPayAdapter.CartViewHolder>() {
         holder.itemView.payPrice.text = "Цена за единицу: " + productList[position].price
         holder.itemView.payTitle.text = productList[position].name
         holder.itemView.payCount.text = "Количество: " + productList[position].quantity
-        holder.itemView.payPriceAll.text = "Всего: " + productList[position].price
+        holder.itemView.payPriceAll.text = "Всего: " + productList[position].total
     }
 
     inner class CartViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -78,12 +79,12 @@ class CartPayAdapter: RecyclerView.Adapter<CartPayAdapter.CartViewHolder>() {
                 map.put("product_id", data.productId)
                 map.put("quantity", 1.toString())
 
-                GlobalScope.launch(Dispatchers.IO) {
+                GlobalScope.launch(Dispatchers.Main) {
                     try {
                         val response = api.cartAdd("Bearer " + bearer.getString("access_token", "empty").toString(), map).awaitResponse()
                         if (response.isSuccessful) {
                             data.quantity = (data.quantity.toInt() + 1).toString()
-                            Log.d("Retrofit", "Добавили +1 кол-во товара")
+                            notifyDataSetChanged()
                         }
                         else {
                             Log.d("Retrofit", response.code().toString())
@@ -94,8 +95,9 @@ class CartPayAdapter: RecyclerView.Adapter<CartPayAdapter.CartViewHolder>() {
                         }
                     }
                 }
-                notifyDataSetChanged()
+
             }
+
             itemView.buttonRemove.setOnClickListener { v: View ->
                 val position: Int = adapterPosition
                 val data = productList[position]
@@ -108,12 +110,12 @@ class CartPayAdapter: RecyclerView.Adapter<CartPayAdapter.CartViewHolder>() {
                     .build()
                     .create(ApiRequests::class.java)
 
-                GlobalScope.launch(Dispatchers.IO) {
+                GlobalScope.launch(Dispatchers.Main) {
                     try {
                         val response = api.cartDelete("Bearer " + bearer.getString("access_token", "empty").toString(), data.key).awaitResponse()
                         if (response.isSuccessful) {
                             data.quantity = (data.quantity.toInt() - 1).toString()
-                            Log.d("Retrofit", "Удалили одно кол-во товара")
+                            notifyDataSetChanged()
                         }
                         else {
                             Log.d("Retrofit", response.code().toString())
@@ -124,15 +126,12 @@ class CartPayAdapter: RecyclerView.Adapter<CartPayAdapter.CartViewHolder>() {
                         }
                     }
                 }
-                notifyDataSetChanged()
             }
         }
     }
 
     fun setData(newList: List<ProductX>) {
         productList = newList
-        Log.d("List init", productList.toString())
         notifyDataSetChanged()
-        Log.d("Retrofit - ProductList", productList.size.toString())
     }
 }

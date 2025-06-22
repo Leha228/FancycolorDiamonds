@@ -65,6 +65,7 @@ class PayActivity : AppCompatActivity() {
 
         if (details != null) {
             webView.loadData("$details<script>document.querySelector('.btn').click()</script>", mimeType, utfType)
+            Log.d("PayActivity", "Running")
             webView.visibility = View.VISIBLE
         }
     }

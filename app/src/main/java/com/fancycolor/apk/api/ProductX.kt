@@ -15,7 +15,7 @@ data class ProductX(
     @SerializedName("points")
     val points: String,
     @SerializedName("price")
-    val price: String,
+    var price: String,
     @SerializedName("product_id")
     val productId: String,
     @SerializedName("quantity")
@@ -29,5 +29,5 @@ data class ProductX(
     @SerializedName("thumb")
     val thumb: String,
     @SerializedName("total")
-    val total: String
+    var total: String
 )
