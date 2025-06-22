@@ -15,6 +15,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import com.fancycolor.apk.api.ProductX
+import com.fancycolor.apk.ui.BacketFragment
+import com.fancycolor.apk.ui.PayFragment
 import com.fancycolor.apk.ui.ProductViewFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.rowtableproductpay.view.*
@@ -25,10 +27,15 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.awaitResponse
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import java.util.*
+import kotlin.collections.HashMap
 
 class CartPayAdapter: RecyclerView.Adapter<CartPayAdapter.CartViewHolder>() {
 
     private var productList = emptyList<ProductX>()
+    private var totalPrice: String = ""
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
         return CartViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.rowtableproductpay, parent, false))
@@ -84,6 +91,10 @@ class CartPayAdapter: RecyclerView.Adapter<CartPayAdapter.CartViewHolder>() {
                         val response = api.cartAdd("Bearer " + bearer.getString("access_token", "empty").toString(), map).awaitResponse()
                         if (response.isSuccessful) {
                             data.quantity = (data.quantity.toInt() + 1).toString()
+                            val total: Int = data.total.replace(Regex("[^0-9]"), "").toInt()
+                            val price: Int = data.price.replace(Regex("[^0-9]"), "").toInt()
+                            totalPrice = "${separateWithSpaces(total + price)}p."
+                            data.total = totalPrice
                             notifyDataSetChanged()
                         }
                         else {
@@ -114,8 +125,20 @@ class CartPayAdapter: RecyclerView.Adapter<CartPayAdapter.CartViewHolder>() {
                     try {
                         val response = api.cartDelete("Bearer " + bearer.getString("access_token", "empty").toString(), data.key).awaitResponse()
                         if (response.isSuccessful) {
-                            data.quantity = (data.quantity.toInt() - 1).toString()
-                            notifyDataSetChanged()
+                            if (data.quantity != "1") {
+                                data.quantity = (data.quantity.toInt() - 1).toString()
+                                val total: Int = data.total.replace(Regex("[^0-9]"), "").toInt()
+                                val price: Int = data.price.replace(Regex("[^0-9]"), "").toInt()
+                                totalPrice = "${separateWithSpaces(total - price)}p."
+                                data.total = totalPrice
+                                notifyDataSetChanged()
+                            }
+                            else {
+                                (activity as FragmentActivity).supportFragmentManager.beginTransaction()
+                                    .replace(R.id.fragment_container, BacketFragment())
+                                    .addToBackStack(null)
+                                    .commit()
+                            }
                         }
                         else {
                             Log.d("Retrofit", response.code().toString())
@@ -133,5 +156,14 @@ class CartPayAdapter: RecyclerView.Adapter<CartPayAdapter.CartViewHolder>() {
     fun setData(newList: List<ProductX>) {
         productList = newList
         notifyDataSetChanged()
+    }
+
+    fun getTotalPrice(): String {
+        return totalPrice
+    }
+
+    fun separateWithSpaces(amount: Int): String {
+        val decimalFormat = DecimalFormat("#,###", DecimalFormatSymbols(Locale("ru", "RU")))
+        return decimalFormat.format(amount)
     }
 }
